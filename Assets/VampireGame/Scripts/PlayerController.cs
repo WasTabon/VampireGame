@@ -94,25 +94,37 @@ public class PlayerController : MonoBehaviour
     public void HandleSkillDash()
     {
         if (!_canDash) return;
+        StartCoroutine(PerformDash());
+    }
+
+    private IEnumerator PerformDash()
+    {
         _canDash = false;
 
-        Vector3 dashDirection = _rigidbody.transform.forward;
+        Vector3 dashDirection = _rigidbody.gameObject.transform.forward.normalized;
+        Vector3 startPosition = _rigidbody.position;
 
-        float dashDir = _dashForce;
-        
-        // Проверка, есть ли стена на пути
-        if (Physics.Raycast(_rigidbody.position, dashDirection, out RaycastHit hit, _dashForce))
+        // Проверка столкновений на пути
+        float dashDistance = _dashForce;
+        if (Physics.Raycast(startPosition, dashDirection, out RaycastHit hit, dashDistance))
         {
-            dashDir = hit.distance - 0.1f; // остановиться чуть до стены
+            dashDistance = hit.distance - 0.05f; // немного не до препятствия
         }
 
-        Vector3 targetPosition = _rigidbody.position + dashDirection.normalized * dashDir;
+        // Спавн партикла на старой позиции в направлении рывка
+        if (_dashParticle != null)
+        {
+            Instantiate(_dashParticle, startPosition, Quaternion.LookRotation(dashDirection));
+        }
+
+        // Смещение игрока
+        Vector3 targetPosition = startPosition + dashDirection * dashDistance;
         _rigidbody.MovePosition(targetPosition);
 
-        Instantiate(_dashParticle, _rigidbody.transform.position, Quaternion.LookRotation(dashDirection));
-
-        StartCoroutine(DashCooldown());
+        yield return new WaitForSeconds(_dashCooldown);
+        _canDash = true;
     }
+
 
     private IEnumerator DashCooldown()
     {
