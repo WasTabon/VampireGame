@@ -21,12 +21,16 @@ public class EnemyController : MonoBehaviour
 
     private Rigidbody rb;
     private Animator animator;
+    private BoxCollider boxCollider;
     private int currentPointIndex = 0;
+
+    private bool _isDead;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider>();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
         
         switch (currentBehavior)
@@ -37,8 +41,19 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public void TakeDamage()
+    {
+        _isDead = true;
+        boxCollider.enabled = false;
+        rb.isKinematic = true;
+        animator.SetBool("Die", true);
+    }
+    
     private void FixedUpdate()
     {
+        if (_isDead)
+            return;
+        
         switch (currentBehavior)
         {
             case EnemyBehavior.Idle:
