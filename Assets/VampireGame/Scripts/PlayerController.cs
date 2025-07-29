@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _dashForce = 20f;
     [SerializeField] private float _dashCooldown = 30f;
 
+    [Header("Particles")] 
+    [SerializeField] private GameObject _dashParticle;
+
     private bool _isWalking = false;
     private bool _canCheckHit = false;
     private bool _canDash = true;
@@ -91,11 +94,22 @@ public class PlayerController : MonoBehaviour
     public void HandleSkillDash()
     {
         if (!_canDash) return;
-
         _canDash = false;
 
-        Vector3 dashDirection = _rigidbody.gameObject.transform.forward;
-        _rigidbody.AddForce(dashDirection.normalized * _dashForce, ForceMode.VelocityChange);
+        Vector3 dashDirection = _rigidbody.transform.forward;
+
+        float dashDir = _dashForce;
+        
+        // Проверка, есть ли стена на пути
+        if (Physics.Raycast(_rigidbody.position, dashDirection, out RaycastHit hit, _dashForce))
+        {
+            dashDir = hit.distance - 0.1f; // остановиться чуть до стены
+        }
+
+        Vector3 targetPosition = _rigidbody.position + dashDirection.normalized * dashDir;
+        _rigidbody.MovePosition(targetPosition);
+
+        Instantiate(_dashParticle, _rigidbody.transform.position, Quaternion.LookRotation(dashDirection));
 
         StartCoroutine(DashCooldown());
     }
