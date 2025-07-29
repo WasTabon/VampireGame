@@ -12,8 +12,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private Animator _animator;
 
+    [Header("Dash Settings")]
+    [SerializeField] private float _dashForce = 20f;
+    [SerializeField] private float _dashCooldown = 30f;
+
     private bool _isWalking = false;
     private bool _canCheckHit = false;
+    private bool _canDash = true;
 
     private void FixedUpdate()
     {
@@ -40,7 +45,7 @@ public class PlayerController : MonoBehaviour
         _animator.SetTrigger("Attack");
         StartCoroutine(DelayedHitCheck());
     }
-    
+
     public void OnHitboxTriggerStay(Collider coll)
     {
         if (_canCheckHit)
@@ -53,7 +58,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
 
     private IEnumerator DelayedHitCheck()
     {
@@ -82,5 +86,23 @@ public class PlayerController : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
             _rigidbody.MoveRotation(Quaternion.Lerp(_rigidbody.rotation, targetRotation, 10f * Time.deltaTime));
         }
+    }
+
+    public void HandleSkillDash()
+    {
+        if (!_canDash) return;
+
+        _canDash = false;
+
+        Vector3 dashDirection = _rigidbody.gameObject.transform.forward;
+        _rigidbody.AddForce(dashDirection.normalized * _dashForce, ForceMode.VelocityChange);
+
+        StartCoroutine(DashCooldown());
+    }
+
+    private IEnumerator DashCooldown()
+    {
+        yield return new WaitForSeconds(_dashCooldown);
+        _canDash = true;
     }
 }
