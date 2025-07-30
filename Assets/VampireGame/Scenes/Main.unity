@@ -11941,6 +11941,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5767211896883088460, guid: 3f6c816965380464484fbd4481fc8edc, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767211896883088460, guid: 3f6c816965380464484fbd4481fc8edc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 76cd11feae09933468379d49b6cba3f2, type: 2}
     - target: {fileID: 7196766868170306619, guid: 3f6c816965380464484fbd4481fc8edc, type: 3}
       propertyPath: m_Name
       value: Door
@@ -11985,6 +11993,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9029928393016272444, guid: 3f6c816965380464484fbd4481fc8edc, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029928393016272444, guid: 3f6c816965380464484fbd4481fc8edc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 76cd11feae09933468379d49b6cba3f2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12140,6 +12156,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2131393475116722994, guid: e996b6d55c383364f922d362e3c89ea9, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131393475116722994, guid: e996b6d55c383364f922d362e3c89ea9, type: 3}
+      propertyPath: m_Size.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131393475116722994, guid: e996b6d55c383364f922d362e3c89ea9, type: 3}
+      propertyPath: m_Center.z
+      value: 0.66
+      objectReference: {fileID: 0}
     - target: {fileID: 7286581244026868679, guid: e996b6d55c383364f922d362e3c89ea9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.866
