@@ -19,6 +19,9 @@ public class EnemyController : MonoBehaviour
     public float reachThreshold = 0.2f;
     public float rotationSpeed = 5f;
 
+    [SerializeField] private PlayerDetector _playerDetector;
+    [SerializeField] private Light _light;
+    
     private Rigidbody rb;
     private Animator animator;
     private BoxCollider boxCollider;
@@ -44,6 +47,8 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage()
     {
         _isDead = true;
+        _playerDetector.enabled = false;
+        _light.enabled = false;
         boxCollider.enabled = false;
         rb.isKinematic = true;
         animator.SetBool("Die", true);
@@ -90,4 +95,37 @@ public class EnemyController : MonoBehaviour
             currentPointIndex = (currentPointIndex + 1) % patrolPoints.Count;
         }
     }
+    
+    private void OnDrawGizmos()
+    {
+        if (currentBehavior != EnemyBehavior.Patrol || patrolPoints == null || patrolPoints.Count < 2)
+            return;
+
+        if (!TryGetComponent(out BoxCollider boxCollider)) return;
+        float lineThickness = boxCollider.size.x;
+
+        for (int i = 0; i < patrolPoints.Count; i++)
+        {
+            if (patrolPoints[i] == null) continue;
+
+            Vector3 current = patrolPoints[i].position;
+            Vector3 next = patrolPoints[(i + 1) % patrolPoints.Count]?.position ?? current;
+            
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(current, 0.2f);
+            
+            Vector3 midPoint = (current + next) / 2f;
+            Vector3 direction = next - current;
+            float length = direction.magnitude;
+            Quaternion rotation = Quaternion.LookRotation(direction);
+
+            Vector3 lineSize = new Vector3(lineThickness, 0.05f, length);
+
+            Gizmos.color = new Color(1f, 1f, 0f, 0.6f);
+            Gizmos.matrix = Matrix4x4.TRS(midPoint, rotation, Vector3.one);
+            Gizmos.DrawCube(Vector3.zero, lineSize);
+            Gizmos.matrix = Matrix4x4.identity;
+        }
+    }
+
 }
