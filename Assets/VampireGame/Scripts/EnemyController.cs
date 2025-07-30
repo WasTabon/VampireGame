@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour
     private BoxCollider boxCollider;
     private int currentPointIndex = 0;
 
-    private bool _isDead;
+    public bool _isDead;
 
     private void Start()
     {

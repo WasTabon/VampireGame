@@ -7,22 +7,24 @@ public class PlayerDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider coll)
     {
-        if (coll.gameObject.TryGetComponent(out PlayerTriggerController _))
+        if (!_enemyController._isDead)
         {
-            Transform playerTransform = coll.transform;
-            Vector3 origin = transform.position;
-            Vector3 direction = (playerTransform.position - origin).normalized;
-            float distance = Vector3.Distance(origin, playerTransform.position);
-
-            // Проверка на наличие объектов слоя "Level" между врагом и игроком
-            if (!Physics.Raycast(origin, direction, distance, levelLayerMask))
+            if (coll.gameObject.TryGetComponent(out PlayerTriggerController _))
             {
-                UIController.Instance.ShowLostPanel();
-            }
+                Transform playerTransform = coll.transform;
+                Vector3 origin = transform.position;
+                Vector3 direction = (playerTransform.position - origin).normalized;
+                float distance = Vector3.Distance(origin, playerTransform.position);
+
+                if (!Physics.Raycast(origin, direction, distance, levelLayerMask))
+                {
+                    UIController.Instance.ShowLostPanel();
+                }
 
 #if UNITY_EDITOR
-            Debug.DrawLine(origin, playerTransform.position, Color.red, 1f);
+                Debug.DrawLine(origin, playerTransform.position, Color.red, 1f);
 #endif
+            }
         }
     }
 }
