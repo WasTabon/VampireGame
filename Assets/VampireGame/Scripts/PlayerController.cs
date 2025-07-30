@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour
     [Header("Joystick Reference")]
     [SerializeField] private Joystick _joystick;
 
+    [Header("Player Parts")] 
+    [SerializeField] private Transform _rightHand;
+    
+    [Header("Components")]
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private Animator _animator;
 
@@ -18,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Particles")] 
     [SerializeField] private GameObject _dashParticle;
+    [SerializeField] private GameObject _hitParticle;
 
     private bool _isWalking = false;
     private bool _canCheckHit = false;
@@ -56,6 +61,7 @@ public class PlayerController : MonoBehaviour
             EnemyController enemy = coll.GetComponent<EnemyController>();
             if (enemy != null)
             {
+                Instantiate(_hitParticle, _rightHand.position, Quaternion.identity);
                 enemy.TakeDamage();
                 _canCheckHit = false;
             }
