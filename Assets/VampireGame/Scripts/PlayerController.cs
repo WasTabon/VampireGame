@@ -1,8 +1,12 @@
+using System;
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
+    
     [Header("Movement")]
     [SerializeField] private float _moveSpeed = 5f;
 
@@ -23,10 +27,21 @@ public class PlayerController : MonoBehaviour
     [Header("Particles")] 
     [SerializeField] private GameObject _dashParticle;
     [SerializeField] private GameObject _hitParticle;
+    [SerializeField] private GameObject _chestParticle;
 
+    public int keys;
+
+    public GameObject chest;
+    public GameObject door;
+    
     private bool _isWalking = false;
     private bool _canCheckHit = false;
     private bool _canDash = true;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void FixedUpdate()
     {
@@ -68,6 +83,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void GetKey()
+    {
+        keys++;
+        Instantiate(_chestParticle, chest.transform.position, quaternion.identity);
+        chest.SetActive(false);
+        
+        UIController.Instance.HidePanel(UIPanelType.GetKeyButton);
+    }
+
+    public void UseKey()
+    {
+        keys--;
+        door.GetComponent<Door>().OpenDoor();
+        
+        UIController.Instance.HidePanel(UIPanelType.UseKeyButton);
+    }
+    
     private IEnumerator DelayedHitCheck()
     {
         yield return new WaitForSeconds(1.05f);
