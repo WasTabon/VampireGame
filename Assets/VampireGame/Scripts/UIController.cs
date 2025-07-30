@@ -22,6 +22,7 @@ public class UIController : MonoBehaviour
 {
     public static UIController Instance;
 
+    [SerializeField] private CanvasGroup _winPanel;
     [SerializeField] private CanvasGroup _lostPanel;
 
     [SerializeField] private TextMeshProUGUI _keysText;
@@ -73,6 +74,12 @@ public class UIController : MonoBehaviour
         _lostPanel.DOFade(0f, 0f);
         _lostPanel.gameObject.SetActive(true);
         _lostPanel.DOFade(1f, 1f);
+    }
+    public void ShowWinPanel()
+    {
+        _winPanel.DOFade(0f, 0f);
+        _winPanel.gameObject.SetActive(true);
+        _winPanel.DOFade(1f, 1f);
     }
     
     public void ShowPanel(UIPanelType panelType)
