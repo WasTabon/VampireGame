@@ -22,6 +22,8 @@ public class UIController : MonoBehaviour
 {
     public static UIController Instance;
 
+    [SerializeField] private CanvasGroup _lostPanel;
+
     [SerializeField] private TextMeshProUGUI _keysText;
     
     [SerializeField] private List<UIPanelEntry> _uiPanels;
@@ -66,6 +68,13 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public void ShowLostPanel()
+    {
+        _lostPanel.DOFade(0f, 0f);
+        _lostPanel.gameObject.SetActive(true);
+        _lostPanel.DOFade(1f, 1f);
+    }
+    
     public void ShowPanel(UIPanelType panelType)
     {
         if (!_panelStates.TryGetValue(panelType, out var panel)) return;
