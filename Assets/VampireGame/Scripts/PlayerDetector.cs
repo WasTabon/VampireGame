@@ -8,7 +8,7 @@ public class PlayerDetector : MonoBehaviour
     {
         if (coll.gameObject.TryGetComponent(out PlayerDetector _))
         {
-            
+            // додоати ключі, двері відкриття ними і ui шоб показувало шо треба ключ і кнопку шоб взяти ключ
         }
     }
 }
