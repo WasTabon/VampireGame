@@ -71,6 +71,7 @@ public class UIController : MonoBehaviour
 
     public void ShowLostPanel()
     {
+        PlayerController.Instance._canWalk = false;
         _lostPanel.DOFade(0f, 0f);
         _lostPanel.gameObject.SetActive(true);
         _lostPanel.DOFade(1f, 1f);

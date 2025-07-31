@@ -7,7 +7,7 @@ public class PlayerDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider coll)
     {
-        if (!_enemyController._isDead)
+        if (!_enemyController._isDead && !PlayerController.Instance.isInvisible) 
         {
             if (coll.gameObject.TryGetComponent(out PlayerTriggerController _))
             {

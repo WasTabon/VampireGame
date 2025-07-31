@@ -28,12 +28,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _dashParticle;
     [SerializeField] private GameObject _hitParticle;
     [SerializeField] private GameObject _chestParticle;
+    [SerializeField] private GameObject _fogParticle;
 
     public int keys;
 
+    public bool isInvisible;
+    
     public GameObject chest;
     public GameObject door;
-    
+
+    public bool _canWalk = true;
     private bool _isWalking = false;
     private bool _canCheckHit = false;
     private bool _canDash = true;
@@ -45,7 +49,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        HandleMovement();
+        if (_canWalk)
+            HandleMovement();
     }
 
     private void OnTriggerStay(Collider coll)
@@ -133,6 +138,36 @@ public class PlayerController : MonoBehaviour
     {
         if (!_canDash) return;
         StartCoroutine(PerformDash());
+    }
+
+    public void HandleInvisible()
+    {
+        if (_fogParticle.activeSelf)
+        {
+            _fogParticle.SetActive(false);
+            isInvisible = false;
+        }
+        else
+        {
+            _fogParticle.SetActive(true);
+            isInvisible = true;
+        }
+    }
+
+    public void HandleFall()
+    {
+        if (_canWalk)
+        {
+            _canWalk = false;
+            isInvisible = true;
+            _animator.SetTrigger("Fall");
+        }
+        else
+        {
+            _canWalk = true;
+            isInvisible = false;
+            _animator.SetTrigger("Stand");
+        }
     }
 
     private IEnumerator PerformDash()
