@@ -1,10 +1,18 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
 public class MenuUIController : MonoBehaviour
 {
+    public static MenuUIController Instance;
+    
     [SerializeField] private CanvasGroup _menuButtonsPanel;
     [SerializeField] private CanvasGroup _levelsPanel;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void OpenLevelsPanel()
     {
@@ -26,5 +34,25 @@ public class MenuUIController : MonoBehaviour
                 _menuButtonsPanel.gameObject.SetActive(true);
                 _menuButtonsPanel.DOFade(1f, 0.5f);
             }));
+    }
+
+    public void CloseMenuButton()
+    {
+        _menuButtonsPanel.DOFade(0f, 0.5f)
+            .OnComplete((() =>
+            {
+                _menuButtonsPanel.gameObject.SetActive(false);
+            }));
+    }
+
+    public Tween CloseMenuButtons()
+    {
+        Tween tween = _menuButtonsPanel.DOFade(0f, 0.5f)
+            .OnComplete(() =>
+            {
+                _menuButtonsPanel.gameObject.SetActive(false);
+            });
+
+        return tween;
     }
 }
