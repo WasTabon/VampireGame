@@ -3,9 +3,9 @@ using Cinemachine;
 
 public class MenuCameraController : MonoBehaviour
 {
-    [SerializeField] private CinemachineVirtualCamera mainCam;
-    [SerializeField] private CinemachineVirtualCamera settingsCam;
-    [SerializeField] private CinemachineVirtualCamera shopCam;
+    [SerializeField] public CinemachineVirtualCamera mainCam;
+    [SerializeField] public CinemachineVirtualCamera settingsCam;
+    [SerializeField] public CinemachineVirtualCamera shopCam;
 
     [ContextMenu("Go To Main Camera")]
     public void GoToMain()
