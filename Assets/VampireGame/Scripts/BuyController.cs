@@ -18,6 +18,7 @@ public class BuyController : MonoBehaviour
         {
             Debug.Log("Complete");
             SkillController.Instance.money += 50;
+            PlayerPrefs.SetInt("money", SkillController.Instance.money);
             PlayerPrefs.Save();
             MusicController.Instance.PlaySpecificSound(buySound);
             loadingButton.SetActive(false);

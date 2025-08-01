@@ -8,6 +8,7 @@ public class MenuUIController : MonoBehaviour
     [SerializeField] private CanvasGroup _menuButtonsPanel;
     [SerializeField] private CanvasGroup _levelsPanel;
     [SerializeField] private CanvasGroup _shopPanel;
+    [SerializeField] private CanvasGroup _settingsPanel;
 
     private void Awake()
     {
@@ -54,6 +55,15 @@ public class MenuUIController : MonoBehaviour
                 _shopPanel.gameObject.SetActive(true);
             }));
     }
+    public void OpenSettingsPanel()
+    {
+        _settingsPanel.DOFade(0f, 0f);
+        _settingsPanel.DOFade(1f, 0.5f)
+            .OnStart((() =>
+            {
+                _settingsPanel.gameObject.SetActive(true);
+            }));
+    }
 
     public void CloseShopPanel()
     {
@@ -91,6 +101,17 @@ public class MenuUIController : MonoBehaviour
         DOVirtual.DelayedCall(0.5f, () =>
         {
             _shopPanel.gameObject.SetActive(false);
+        });
+
+        return tween;
+    }
+    public Tween CloseSettingsPanelTween()
+    {
+        Tween tween = _settingsPanel.DOFade(0f, 0.5f);
+        
+        DOVirtual.DelayedCall(0.5f, () =>
+        {
+            _settingsPanel.gameObject.SetActive(false);
         });
 
         return tween;

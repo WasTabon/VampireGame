@@ -6,10 +6,14 @@ public class SkillController : MonoBehaviour
 {
     public static SkillController Instance;
 
+    [SerializeField] private AudioClip _buySound;
+    [SerializeField] private AudioClip _notBuySound;
+    
     [SerializeField] private TextMeshProUGUI _moneyText;
     
     [SerializeField] private GameObject _lieSkillBuyButton;
     [SerializeField] private GameObject _invisibleSkillBuyButton;
+    [SerializeField] private GameObject _notEnoughMoneyPanel;
 
     public int money;
     
@@ -20,6 +24,8 @@ public class SkillController : MonoBehaviour
 
     private void Start()
     {
+        money = PlayerPrefs.GetInt("money", 50);
+        
         string lie = PlayerPrefs.GetString("lie", "no");
         if (lie == "no")
         {
@@ -59,6 +65,12 @@ public class SkillController : MonoBehaviour
             money -= 50;
             _lieSkillBuyButton.gameObject.SetActive(false);
             PlayerPrefs.SetString("lie", "yes");
+            MusicController.Instance.PlaySpecificSound(_buySound);
+        }
+        else
+        {
+            _notEnoughMoneyPanel.gameObject.SetActive(true);
+            MusicController.Instance.PlaySpecificSound(_notBuySound);
         }
     }
     public void BuyInvisibleSkill()
@@ -68,6 +80,12 @@ public class SkillController : MonoBehaviour
             money -= 50;
             _invisibleSkillBuyButton.gameObject.SetActive(false);
             PlayerPrefs.SetString("invisible", "yes");
+            MusicController.Instance.PlaySpecificSound(_buySound);
+        }
+        else
+        {
+            _notEnoughMoneyPanel.gameObject.SetActive(true);
+            MusicController.Instance.PlaySpecificSound(_notBuySound);
         }
     }
 }

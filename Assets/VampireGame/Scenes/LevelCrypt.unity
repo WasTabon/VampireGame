@@ -23807,8 +23807,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689474397}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.009688273, y: 0.8829502, z: -0.46896532, w: 0.019407451}
-  m_LocalPosition: {x: -11.367631, y: 5.8051376, z: -1.2847176}
+  m_LocalRotation: {x: 0.035611324, y: 0.70692587, z: -0.037515566, w: 0.7053937}
+  m_LocalPosition: {x: 1.489172, y: 1.3166919, z: -0.808}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25504,6 +25504,7 @@ MonoBehaviour:
   _menuButtonsPanel: {fileID: 2030098876}
   _levelsPanel: {fileID: 456282936}
   _shopPanel: {fileID: 913265283}
+  _settingsPanel: {fileID: 1000735003}
 --- !u!1 &754551458
 GameObject:
   m_ObjectHideFlags: 0
@@ -32618,7 +32619,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 111
+  m_Priority: 0
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -33572,7 +33573,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1000735002
 RectTransform:
   m_ObjectHideFlags: 0
@@ -41871,9 +41872,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ee61ef7835ffb4dbb963d8d5675c08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _buySound: {fileID: 0}
+  _notBuySound: {fileID: 0}
   _moneyText: {fileID: 1669879372}
   _lieSkillBuyButton: {fileID: 875505216}
   _invisibleSkillBuyButton: {fileID: 261977333}
+  _notEnoughMoneyPanel: {fileID: 640247490}
   money: 0
 --- !u!1001 &1292580229
 PrefabInstance:
@@ -49995,7 +49999,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1530219809}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1709419836}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1530219809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58122,7 +58138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1734844735
 RectTransform:
   m_ObjectHideFlags: 0

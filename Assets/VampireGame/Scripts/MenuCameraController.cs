@@ -49,7 +49,22 @@ public class MenuCameraController : MonoBehaviour
     {
         if (_isShop)
         {
+            _isShop = false;
+            
             MenuUIController.Instance.CloseShopPanelTween()
+                .OnComplete((() =>
+                {
+                    GoToMain((() =>
+                    {
+                        MenuUIController.Instance.OpenMenuButtonTween();
+                    }));
+                }));
+        }
+        else if (_isSettings)
+        {
+            _isSettings = false;
+            
+            MenuUIController.Instance.CloseSettingsPanelTween()
                 .OnComplete((() =>
                 {
                     GoToMain((() =>
@@ -63,9 +78,13 @@ public class MenuCameraController : MonoBehaviour
     [ContextMenu("Go To Settings Camera")]
     public void GoToSettings()
     {
+        _isSettings = true;
         MenuUIController.Instance.CloseMenuButtonTween().OnComplete((() =>
         {
-            GoToSettings(null);
+            GoToSettings((() =>
+            {
+                MenuUIController.Instance.OpenSettingsPanel();
+            }));
         }));
     }
 
