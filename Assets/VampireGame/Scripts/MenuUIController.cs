@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -8,6 +7,7 @@ public class MenuUIController : MonoBehaviour
     
     [SerializeField] private CanvasGroup _menuButtonsPanel;
     [SerializeField] private CanvasGroup _levelsPanel;
+    [SerializeField] private CanvasGroup _shopPanel;
 
     private void Awake()
     {
@@ -44,14 +44,54 @@ public class MenuUIController : MonoBehaviour
                 _menuButtonsPanel.gameObject.SetActive(false);
             }));
     }
+    
+    public void OpenShopPanel()
+    {
+        _shopPanel.DOFade(0f, 0f);
+        _shopPanel.DOFade(1f, 0.5f)
+            .OnStart((() =>
+            {
+                _shopPanel.gameObject.SetActive(true);
+            }));
+    }
 
-    public Tween CloseMenuButtons()
+    public void CloseShopPanel()
+    {
+        _shopPanel.DOFade(0f, 0.5f)
+            .OnStart((() =>
+            {
+                _shopPanel.gameObject.SetActive(false);
+            }));
+    }
+
+    public Tween CloseMenuButtonTween()
     {
         Tween tween = _menuButtonsPanel.DOFade(0f, 0.5f)
             .OnComplete(() =>
             {
                 _menuButtonsPanel.gameObject.SetActive(false);
             });
+
+        return tween;
+    }
+    public Tween OpenMenuButtonTween()
+    {
+        Tween tween = _menuButtonsPanel.DOFade(1f, 0.5f)
+            .OnStart(() =>
+            {
+                _menuButtonsPanel.gameObject.SetActive(true);
+            });
+
+        return tween;
+    }
+    public Tween CloseShopPanelTween()
+    {
+        Tween tween = _shopPanel.DOFade(0f, 0.5f);
+        
+        DOVirtual.DelayedCall(0.5f, () =>
+        {
+            _shopPanel.gameObject.SetActive(false);
+        });
 
         return tween;
     }

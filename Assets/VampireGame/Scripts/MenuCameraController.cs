@@ -5,21 +5,32 @@ using DG.Tweening;
 
 public class MenuCameraController : MonoBehaviour
 {
+    [SerializeField] private Camera _camera;
+    
     [SerializeField] public CinemachineVirtualCamera mainCam;
     [SerializeField] public CinemachineVirtualCamera settingsCam;
     [SerializeField] public CinemachineVirtualCamera shopCam;
 
+    private bool _isLevels;
+    private bool _isShop;
+    private bool _isSettings;
+    
     private CinemachineVirtualCamera _currentTarget;
     private Action _onCameraArrived;
 
     private const float PositionTolerance = 0.05f;
     private const float RotationTolerance = 1f;
 
+    private void Start()
+    {
+        GoToMain(null);
+    }
+
     private void Update()
     {
         if (_currentTarget == null || _onCameraArrived == null) return;
 
-        Transform camTransform = Camera.main.transform;
+        Transform camTransform = _camera.transform;
         Transform targetTransform = _currentTarget.transform;
 
         float posDiff = Vector3.Distance(camTransform.position, targetTransform.position);
@@ -36,21 +47,39 @@ public class MenuCameraController : MonoBehaviour
     [ContextMenu("Go To Main Camera")]
     public void GoToMain()
     {
-        GoToMain(null);
+        if (_isShop)
+        {
+            MenuUIController.Instance.CloseShopPanelTween()
+                .OnComplete((() =>
+                {
+                    GoToMain((() =>
+                    {
+                        MenuUIController.Instance.OpenMenuButtonTween();
+                    }));
+                }));
+        }
     }
 
     [ContextMenu("Go To Settings Camera")]
     public void GoToSettings()
     {
-        GoToSettings(null);
+        MenuUIController.Instance.CloseMenuButtonTween().OnComplete((() =>
+        {
+            GoToSettings(null);
+        }));
     }
 
     [ContextMenu("Go To Shop Camera")]
     public void GoToShop()
     {
-        MenuUIController.Instance.CloseMenuButtons().OnComplete((() =>
+        _isShop = true;
+        MenuUIController.Instance.CloseMenuButtonTween().OnComplete((() =>
         {
-            GoToShop(null);
+            GoToShop(() =>
+            {
+                Debug.Log("MoveCompleted");
+                MenuUIController.Instance.OpenShopPanel();
+            });
         }));
     }
     
