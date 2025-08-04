@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class PlayerWalkParticles : MonoBehaviour
 {
+    [SerializeField] private AudioClip[] _walkSounds;
+    
     [Header("Player Parts")]
     [SerializeField] private Transform _leftLeg;
     [SerializeField] private Transform _rightLeg;
@@ -29,14 +31,23 @@ public class PlayerWalkParticles : MonoBehaviour
 
     public void HandleLeftStep()
     {
+        HandleWalkSound();
         SpawnParticle(_leftLeg.position);
     }
 
     public void HandleRightStep()
     {
+        HandleWalkSound();
         SpawnParticle(_rightLeg.position);
     }
 
+    private void HandleWalkSound()
+    {
+        int random = Random.Range(0, _walkSounds.Length);
+        
+        MusicController.Instance.PlaySpecificSound(_walkSounds[random]);
+    }
+    
     private void SpawnParticle(Vector3 position)
     {
         ParticleWrapper wrapper = GetParticleFromPool();

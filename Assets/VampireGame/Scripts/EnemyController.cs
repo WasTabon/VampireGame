@@ -19,6 +19,8 @@ public class EnemyController : MonoBehaviour
     public float reachThreshold = 0.2f;
     public float rotationSpeed = 5f;
 
+    [SerializeField] private AudioClip _deathSound;
+    
     [SerializeField] private PlayerDetector _playerDetector;
     [SerializeField] private Light _light;
     
@@ -47,6 +49,7 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage()
     {
         _isDead = true;
+        MusicController.Instance.PlaySpecificSound(_deathSound);
         _playerDetector.enabled = false;
         _light.enabled = false;
         boxCollider.enabled = false;

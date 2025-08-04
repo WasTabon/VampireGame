@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
+
+    [SerializeField] private AudioClip _attackSound;
     
     [Header("Movement")]
     [SerializeField] private float _moveSpeed = 5f;
@@ -71,6 +73,7 @@ public class PlayerController : MonoBehaviour
     public void HandleAttack()
     {
         _animator.SetTrigger("Attack");
+        MusicController.Instance.PlaySpecificSound(_attackSound);
         StartCoroutine(DelayedHitCheck());
     }
 
