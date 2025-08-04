@@ -8,6 +8,11 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance;
 
     [SerializeField] private AudioClip _attackSound;
+    [SerializeField] private AudioClip _dashSound;
+    [SerializeField] private AudioClip _invisibleSound;
+    [SerializeField] private AudioClip _lieSound;
+    [SerializeField] private AudioClip _chestSound;
+    [SerializeField] private AudioClip _doorSound;
     
     [Header("Movement")]
     [SerializeField] private float _moveSpeed = 5f;
@@ -98,6 +103,8 @@ public class PlayerController : MonoBehaviour
         chest.SetActive(false);
         
         UIController.Instance.HidePanel(UIPanelType.GetKeyButton);
+        
+        MusicController.Instance.PlaySpecificSound(_chestSound);
     }
 
     public void UseKey()
@@ -106,6 +113,7 @@ public class PlayerController : MonoBehaviour
         door.GetComponent<Door>().OpenDoor();
         
         UIController.Instance.HidePanel(UIPanelType.UseKeyButton);
+        MusicController.Instance.PlaySpecificSound(_doorSound);
     }
     
     private IEnumerator DelayedHitCheck()
@@ -140,11 +148,13 @@ public class PlayerController : MonoBehaviour
     public void HandleSkillDash()
     {
         if (!_canDash) return;
+        MusicController.Instance.PlaySpecificSound(_dashSound);
         StartCoroutine(PerformDash());
     }
 
     public void HandleInvisible()
     {
+        MusicController.Instance.PlaySpecificSound(_invisibleSound);
         if (_fogParticle.activeSelf)
         {
             _fogParticle.SetActive(false);
@@ -159,6 +169,7 @@ public class PlayerController : MonoBehaviour
 
     public void HandleFall()
     {
+        MusicController.Instance.PlaySpecificSound(_lieSound);
         if (_canWalk)
         {
             _canWalk = false;

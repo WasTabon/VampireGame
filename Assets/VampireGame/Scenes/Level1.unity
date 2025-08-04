@@ -15024,6 +15024,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackSound: {fileID: 8300000, guid: dbc88f72aa7bb484291003e5b34081f6, type: 3}
+  _dashSound: {fileID: 8300000, guid: 1bcc87fc6694a644596946c5ea1fbad9, type: 3}
+  _invisibleSound: {fileID: 8300000, guid: 6d88a2b06650370429bf8bc3a5f3d751, type: 3}
+  _lieSound: {fileID: 8300000, guid: 27f7f0f52d918ed469a1c8c35ede55d1, type: 3}
+  _chestSound: {fileID: 8300000, guid: 76bb75cdcb343cc4fa9dfbcf64700b1c, type: 3}
+  _doorSound: {fileID: 8300000, guid: c5fb10ec93141f8429d68396e917b8b4, type: 3}
   _moveSpeed: 5
   _joystick: {fileID: 641427848}
   _rightHand: {fileID: 6337183591153386499}
