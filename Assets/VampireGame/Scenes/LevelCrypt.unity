@@ -8540,6 +8540,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1587955414}
+        m_TargetAssemblyTypeName: MusicController, Assembly-CSharp
+        m_MethodName: PlayClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 724869074}
         m_TargetAssemblyTypeName: ScrollSnapController, Assembly-CSharp
         m_MethodName: ScrollPrevious
@@ -18619,7 +18631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingButton: {fileID: 302059258}
-  buySound: {fileID: 0}
+  buySound: {fileID: 8300000, guid: 61eca2f157372f644893cb7bd7772bde, type: 3}
   buttonText: {fileID: 164924033}
   panel: {fileID: 1888321153}
 --- !u!1 &491045956
@@ -20083,6 +20095,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1587955414}
+        m_TargetAssemblyTypeName: MusicController, Assembly-CSharp
+        m_MethodName: PlaySpecificSound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 37db16f1c101b0547baec2233d8ba1ed, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 542322834}
         m_TargetAssemblyTypeName: MenuCameraController, Assembly-CSharp
         m_MethodName: GoToMain
@@ -26354,6 +26378,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1587955414}
+        m_TargetAssemblyTypeName: MusicController, Assembly-CSharp
+        m_MethodName: PlaySpecificSound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 37db16f1c101b0547baec2233d8ba1ed, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 542322834}
         m_TargetAssemblyTypeName: MenuCameraController, Assembly-CSharp
         m_MethodName: GoToShop
@@ -27072,6 +27108,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1587955414}
+        m_TargetAssemblyTypeName: MusicController, Assembly-CSharp
+        m_MethodName: PlayClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 752986914}
         m_TargetAssemblyTypeName: MenuUIController, Assembly-CSharp
         m_MethodName: CloseLevelsPanel
@@ -27205,6 +27253,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1587955414}
+        m_TargetAssemblyTypeName: MusicController, Assembly-CSharp
+        m_MethodName: PlaySpecificSound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 37db16f1c101b0547baec2233d8ba1ed, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 542322834}
         m_TargetAssemblyTypeName: MenuCameraController, Assembly-CSharp
         m_MethodName: GoToSettings
@@ -44190,8 +44250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ee61ef7835ffb4dbb963d8d5675c08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buySound: {fileID: 0}
-  _notBuySound: {fileID: 0}
+  _buySound: {fileID: 8300000, guid: 767261f474a3fa443b867b26804a6387, type: 3}
+  _notBuySound: {fileID: 8300000, guid: a5fa65b65d600f648bfb8b2b3b8e5531, type: 3}
   _moneyText: {fileID: 1669879372}
   _lieSkillBuyButton: {fileID: 875505216}
   _invisibleSkillBuyButton: {fileID: 261977333}
@@ -55369,7 +55429,7 @@ MonoBehaviour:
   _soundButtonIconOff: {fileID: 0}
   _audioSourceMusic: {fileID: 1587955415}
   _audioSourceSound: {fileID: 1904837598}
-  _uiClickSound: {fileID: 0}
+  _uiClickSound: {fileID: 8300000, guid: eb82178a61c6e1f46b27683348204c07, type: 3}
 --- !u!82 &1587955415
 AudioSource:
   m_ObjectHideFlags: 0
@@ -55380,7 +55440,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c1dff5582f08feb40b506b92ab473bb5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -63026,6 +63086,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1587955414}
+        m_TargetAssemblyTypeName: MusicController, Assembly-CSharp
+        m_MethodName: PlayClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 724869074}
         m_TargetAssemblyTypeName: ScrollSnapController, Assembly-CSharp
         m_MethodName: ScrollNext
@@ -67762,6 +67834,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1587955414}
+        m_TargetAssemblyTypeName: MusicController, Assembly-CSharp
+        m_MethodName: PlaySpecificSound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 37db16f1c101b0547baec2233d8ba1ed, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 542322834}
         m_TargetAssemblyTypeName: MenuCameraController, Assembly-CSharp
         m_MethodName: GoToMain
@@ -69493,6 +69577,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1587955414}
+        m_TargetAssemblyTypeName: MusicController, Assembly-CSharp
+        m_MethodName: PlaySpecificSound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 37db16f1c101b0547baec2233d8ba1ed, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 752986914}
         m_TargetAssemblyTypeName: MenuUIController, Assembly-CSharp
         m_MethodName: OpenLevelsPanel
