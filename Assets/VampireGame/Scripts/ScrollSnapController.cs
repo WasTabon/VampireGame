@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -13,8 +14,9 @@ public class ScrollSnapController : MonoBehaviour
     private float itemWidth;
     private int totalItems;
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitForEndOfFrame();
         UpdateItemData();
     }
 

@@ -4482,7 +4482,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 275897441}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1085181603}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Level1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &275897441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11432,8 +11444,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 891136380}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 12.349852, y: 1.9542108, z: -17.650726}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.8607302, y: 3.9142108, z: -2.2198515}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11441,7 +11453,8 @@ Transform:
   - {fileID: 1876436283}
   - {fileID: 380623484}
   - {fileID: 2081005331}
-  m_Father: {fileID: 1718727794}
+  - {fileID: 1085181602}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &891309640
 GameObject:
@@ -14558,6 +14571,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3483011862490049741, guid: 3a879273646fa9e4cab1fe1c259e1ca1, type: 3}
   m_PrefabInstance: {fileID: 1071519290}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1085181601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1085181602}
+  - component: {fileID: 1085181603}
+  m_Layer: 0
+  m_Name: SceneLoaderController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1085181602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085181601}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 95.79539, y: -30.539236, z: 4.146432}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 891136382}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1085181603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085181601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f0a8faf9b1fb541b868c77e089a38d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1085434811 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8401242962546384741, guid: 2e0ae77adcfed2d4fa1a166940f69421, type: 3}
@@ -22998,8 +23055,7 @@ Transform:
   m_LocalPosition: {x: 15.79, y: 1.96, z: 10.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 891136382}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1720020581
@@ -23084,7 +23140,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1720020584}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1085181603}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: LevelCrypt
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1720020584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33396,6 +33464,7 @@ SceneRoots:
   - {fileID: 2022342348}
   - {fileID: 6479194140115270449}
   - {fileID: 1624335761}
+  - {fileID: 891136382}
   - {fileID: 1718727794}
   - {fileID: 103800317}
   - {fileID: 9107929866361125594}

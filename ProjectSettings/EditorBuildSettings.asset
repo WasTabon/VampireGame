@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/VampireGame/Scenes/Levels.unity
-    guid: 9f089f1cede62704ebe0d4d0b938ab0a
+    path: Assets/VampireGame/Scenes/LevelCrypt.unity
+    guid: 7d02d80e6239ec54f9052373d86015a2
   - enabled: 1
-    path: Assets/VampireGame/Scenes/Main.unity
+    path: Assets/VampireGame/Scenes/Level1.unity
     guid: 09404ff782897b140ba761566fc6ef83
   m_configObjects: {}
