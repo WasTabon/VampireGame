@@ -109,11 +109,14 @@ public class PlayerController : MonoBehaviour
 
     public void UseKey()
     {
-        keys--;
-        door.GetComponent<Door>().OpenDoor();
-        
-        UIController.Instance.HidePanel(UIPanelType.UseKeyButton);
-        MusicController.Instance.PlaySpecificSound(_doorSound);
+        if (keys >= 1)
+        {
+            keys--;
+            door.GetComponent<Door>().OpenDoor();
+
+            UIController.Instance.HidePanel(UIPanelType.UseKeyButton);
+            MusicController.Instance.PlaySpecificSound(_doorSound);
+        }
     }
     
     private IEnumerator DelayedHitCheck()
