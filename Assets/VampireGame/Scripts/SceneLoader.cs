@@ -23,11 +23,9 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(levelName);
     }
     
-#if UNITY_EDITOR
     // Метод для Editor скрипта
     public void LoadLevelEditor(string levelName)
     {
         LoadLevel(levelName);
     }
-#endif
 }
