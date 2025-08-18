@@ -32,6 +32,10 @@ public class UIController : MonoBehaviour
 
     private Dictionary<UIPanelType, UIPanelState> _panelStates = new();
 
+    private GameObject skillButtonFall;
+    private GameObject skillButtonInvisible;
+    private GameObject skillButtonDash;
+    
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -42,6 +46,49 @@ public class UIController : MonoBehaviour
         Instance = this;
 
         InitializePanels();
+    }
+
+    private void Start()
+    {
+        // Находим кнопки на сцене по имени
+        skillButtonFall = GameObject.Find("SkillButtonFall");
+        skillButtonInvisible = GameObject.Find("SkillButtonInvisible");
+        skillButtonDash = GameObject.Find("SkillButtonDash");
+
+        // Если кнопки не найдены, выходим (чтобы не было ошибок)
+        if (skillButtonFall == null || skillButtonInvisible == null || skillButtonDash == null)
+        {
+            Debug.LogError("Не найдены кнопки навыков на сцене!");
+            return;
+        }
+
+        string skill = PlayerPrefs.GetString("skill", "dash"); // по умолчанию пусть будет Dash
+
+        if (skill == "lie")
+        {
+            skillButtonFall.SetActive(true);
+            skillButtonInvisible.SetActive(false);
+            skillButtonDash.SetActive(false);
+        }
+        else if (skill == "invisible")
+        {
+            skillButtonFall.SetActive(false);
+            skillButtonInvisible.SetActive(true);
+            skillButtonDash.SetActive(false);
+        }
+        else if (skill == "dash")
+        {
+            skillButtonFall.SetActive(false);
+            skillButtonInvisible.SetActive(false);
+            skillButtonDash.SetActive(true);
+        }
+        else // любое другое значение
+        {
+            // включаем Dash как дефолт
+            skillButtonFall.SetActive(false);
+            skillButtonInvisible.SetActive(false);
+            skillButtonDash.SetActive(true);
+        }
     }
 
     private void Update()
