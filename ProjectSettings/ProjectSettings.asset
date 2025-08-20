@@ -974,7 +974,8 @@ PlayerSettings:
   windowsGamepadBackendHint: 0
   cloudProjectId: b04a0583-4f6e-48e2-85f1-e23b732051d2
   framebufferDepthMemorylessMode: 0
-  qualitySettingsNames: []
+  qualitySettingsNames:
+  - Very Low
   projectName: vampirGame
   organizationId: unity_7uso5rss2sjfeq
   cloudEnabled: 0
