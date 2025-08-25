@@ -104,6 +104,7 @@ public class UIController : MonoBehaviour
 
             var startPos = panelEntry.panelTransform.anchoredPosition;
             var hiddenPos = startPos + new Vector2(0, -Screen.height);
+            hiddenPos.y -= 300f;
 
             panelEntry.panelTransform.anchoredPosition = hiddenPos;
 
